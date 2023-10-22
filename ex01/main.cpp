@@ -49,12 +49,22 @@ int main(void)
     std::cout << "10: foo.beRepaired(10): Claptraps with no energy cannot heal\n";
     foo.beRepaired(10);
 
-    std::cout << "\n--ScavTrap constructors\n";
-    ScavTrap unnamed_st;
-    ScavTrap baz("Baz");
+    {
+        std::cout << "\n-- ScavTrap constructors\n";
+        ScavTrap unnamed_st;
+        ScavTrap foo("Foo");
 
-    std::cout << "\nbaz.guardGate() : ";
-    baz.guardGate();
+        std::cout << "\n-- ScavTrap copy constructor\n";
+        ScavTrap bar(foo);
+
+        std::cout << "\nfoo.guardGate() : ";
+        foo.guardGate();
+
+        std::cout << "\nfoo.attack('Baz')\n";
+        foo.attack("Baz");
+
+        std::cout << "\n-- ScavTrap destructors\n";
+    }
 
     std::cout << "\n-- Returning from main\n";
     return EXIT_SUCCESS;
