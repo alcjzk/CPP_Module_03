@@ -22,6 +22,18 @@ ScavTrap::~ScavTrap()
     std::cout << "ScavTrap destructor called\n";
 }
 
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+    std::cout << "ScavTrap copy assignment operator called\n";
+    if (this == &other)
+        return *this;
+    _name = other._name;
+    _hit_points = other._hit_points;
+    _energy_points = other._energy_points;
+    _attack_damage = other._attack_damage;
+    return *this;
+}
+
 void ScavTrap::attack(const std::string& target)
 {
     if (!_hit_points || !_energy_points)

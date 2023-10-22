@@ -63,6 +63,9 @@ int main(void)
         std::cout << "\nfoo.attack('Baz')\n";
         foo.attack("Baz");
 
+        std::cout << "\n-- Copy assign\n";
+        foo = bar;
+
         std::cout << "\n-- ScavTrap destructors\n";
     }
 

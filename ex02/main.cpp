@@ -64,6 +64,9 @@ int main(void)
         std::cout << "\nfoo.attack('Baz')\n";
         foo.attack("Baz");
 
+        std::cout << "\n-- Copy assign\n";
+        foo = bar;
+
         std::cout << "\n-- ScavTrap destructors\n";
     }
 
@@ -77,6 +80,9 @@ int main(void)
 
         std::cout << "\nfoo.highFiveGuys() : ";
         foo.highFiveGuys();
+
+        std::cout << "\n-- Copy assign\n";
+        foo = bar;
 
         std::cout << "\n-- FragTrap destructors\n";
     }
