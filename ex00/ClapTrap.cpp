@@ -2,7 +2,7 @@
 #include <limits>
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name = "Unnamed") :
+ClapTrap::ClapTrap(std::string name) :
     _name(name),
     _hit_points(10),
     _energy_points(10),
@@ -50,9 +50,10 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
     if (!_hit_points || !_energy_points)
         return;
-    _hit_points = _hit_points <= amount ? 0 : _hit_points - amount;
+    amount = amount <= _hit_points ? amount : _hit_points;
+    _hit_points -= amount;
     std::cout << "ClapTrap " << _name << " took " << amount <<
-        "points of damage!\n";
+        " points of damage!\n";
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -64,6 +65,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     _energy_points--;
     amount_max = std::numeric_limits<unsigned int>::max() - _hit_points;
     amount = amount <= amount_max ? amount : amount_max;
+    _hit_points += amount;
     std::cout << "ClapTrap " << _name << " repairs itself with " <<
         amount << " points\n";
 }
